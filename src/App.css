@@ -1,0 +1,596 @@
+* {
+  padding: 0%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.App {
+  width: 100%;
+  height: 100vh;
+}
+.navb {
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-family: cursive;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.navb .navb-inner {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.navb .navb-inner img {
+  width: 70px;
+  transform: scale(1.4) translate(-10%, 0);
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 99;
+}
+.navb .navb-inner img:hover {
+  transform: scale(1) translate(-10%, 0);
+}
+.navb .search {
+  position: relative;
+  z-index: 999;
+}
+.navb .search input {
+  padding: 5px 15px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-family: cursive;
+  margin-right: 10px;
+}
+.navb .search .search-results {
+  position: absolute;
+  margin-top: 5px;
+  top: 100%;
+  left: 0;
+  max-height: 300px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 15px;
+  font-size: 10px;
+}
+.navb .search .search-results::-webkit-scrollbar {
+  width: 10px;
+  background-color: gray;
+  border-radius: 5px;
+}
+.navb .search .search-results::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.navb .search .search-results a {
+  text-decoration: none;
+}
+.navb .search .search-results .result {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  margin: 2px;
+  padding: 10px;
+}
+.navb .navb-inner h1 {
+  font-family: "Irish Grover", cursive;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.menu .bar {
+  display: none;
+}
+.menu .menu-check {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+.menu .manga {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1.3px;
+}
+.menu .manga a {
+  text-decoration: none;
+  transition: 0.5s all;
+  cursor: pointer;
+  color: white;
+}
+.menu .manga-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: black;
+  border-radius: 10px;
+}
+.menu .manga:hover a,
+.navb .search .search-results .result:hover {
+  color: rgb(197, 197, 197);
+}
+
+.main-area-inner {
+  width: 200px;
+  overflow: auto;
+  background-color: aqua;
+  margin: 5px;
+}
+.App .main-area .home .home-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+.home .row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+  background-color: black;
+}
+.home .row .column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+.home .row .column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.home .row .column img:hover {
+  transform: scale(1.05);
+  border: 1px solid white;
+  -webkit-box-shadow: 0 14px 28px rgba(255, 250, 250, 0.25),
+    0 10px 10px rgba(255, 255, 255, 0.445);
+  -moz-box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25),
+    0 10px 10px rgba(255, 255, 255, 0.445);
+  box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25),
+    0 10px 10px rgba(255, 255, 255, 0.445);
+}
+.cp-text {
+  color: rgb(202, 202, 202);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 800px) {
+  .home .row .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home .row .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 720px) {
+  .navb .navb-inner h1 {
+    font-size: 25px;
+  }
+  .navb .navb-inner img {
+    width: 40px;
+    transform: scale(1.4) translate(0%, 0);
+    margin: 10px;
+  }
+  .navb .navb-inner img:hover {
+    transform: scale(1) translate(0%, 0);
+  }
+  .menu {
+    display: block;
+    position: relative;
+  }
+  .menu .menu-check {
+    display: initial;
+    opacity: 0;
+  }
+  .menu .menu-check:checked ~ .manga-outer {
+    display: block;
+  }
+  .menu .bar {
+    display: block;
+    font-size: 25px;
+    pointer-events: none;
+  }
+  .menu .manga-outer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -50%;
+    padding: 5px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 12px;
+    width: 105px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    z-index: 99;
+  }
+  .menu .bar:hover ~ .manga-outer {
+    display: block;
+  }
+  .menu .manga {
+    font-size: 10px;
+    padding: 5px;
+  }
+  .navb .navb-inner {
+    gap: 10px;
+  }
+  .navb .search input {
+    padding: 3px 7px;
+    width: 75px;
+    font-size: 10px;
+  }
+}
+.Top {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  z-index: 0;
+  overflow-x: hidden;
+}
+.Top .cp-text {
+  padding: 150px 0;
+  color: rgb(88, 88, 88);
+  text-align: center;
+}
+.container {
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 250px;
+  transform: rotateY(7deg) translate(6%, 0);
+  background-color: transparent;
+  z-index: -1;
+}
+.Top h1,
+.Manga h1,
+.Season h1 {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  font-size: 80px;
+  line-height: 100vh;
+  vertical-align: middle;
+  user-select: none;
+  color: white;
+  font-family: "Irish Grover", cursive;
+  background-image: url(/src/Images/TOP.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: -5px 5px rgb(83, 83, 83);
+}
+.container .card {
+  width: 250px;
+  position: relative;
+  background: #fff;
+  margin: 30px 10px;
+  flex-direction: column;
+  transition: 0.3s linear;
+  color: white;
+  perspective: 1000px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px;
+}
+.container .card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: gray;
+}
+.container .card:hover {
+  height: 300px;
+}
+.container .card .img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  top: -60px;
+  left: 25px;
+  z-index: 1;
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition-delay: 0.3s;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px, inset rgba(0, 0, 0, 0.09) 0px 2px 1px,
+    inset rgba(0, 0, 0, 0.09) 0px 4px 2px, inset rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    inset rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    inset rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.container .card .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  position: absolute;
+}
+.container .card .img .img-inner {
+  position: absolute;
+  background: rgba(132, 133, 131, 0.582);
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  overflow: auto;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-family: "Cinzel", serif;
+}
+.container .card .img .img-inner .rank {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 20px;
+  padding: 6px 4px;
+  background-color: rgb(192, 0, 0);
+  text-align: left;
+}
+.container .card .img .img-inner .type {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+.container .card .img .img-inner .title {
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.container .card .img .img-inner .link,
+.Season .Season-inner .img .link,
+.episodes .episodes-inner .link {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+.container .card .img .img-inner .link:hover,
+.Season .Season-inner .img .link:hover,
+.episodes .episodes-inner .link:hover {
+  background-color: rgb(187, 187, 187);
+}
+.container .card:hover .img {
+  transform: rotateY(180deg);
+}
+.container .card .content {
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.container .card:hover .content {
+  visibility: visible;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+  opacity: 1;
+}
+.Manga,
+.Season {
+  background: #7d7d7d;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.Manga h1 {
+  background-image: url(/src/Images/MANGA.jpg);
+}
+.Manga .Manga-inner,
+.Season .Season-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+.Manga .Manga-inner .img,
+.Season .Season-inner .img {
+  margin: 10px;
+}
+.Manga .Manga-inner .img .Manga-img,
+.Season .Season-inner .img .Season-img {
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.Manga .Manga-inner .img .Manga-img:hover,
+.Season .Season-inner .img .Season-img:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+.Manga .Manga-inner .innerImg,
+.Season .Season-inner .innerImg {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+.Manga .Manga-inner .img .title,
+.Season .Season-inner .img .title {
+  font-size: 2em;
+  word-wrap: break-word;
+  font-family: "Irish Grover", cursive;
+  color: rgb(172, 63, 63);
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+.Manga .Manga-inner .content,
+.Season .Season-inner .content {
+  margin: 10px;
+  max-width: 600px;
+  background-color: rgba(56, 56, 56, 0.705);
+  padding: 15px;
+  border-radius: 2em 1em 4em / 0.5em 3em;
+  transition: 0.5s;
+}
+.Manga .Manga-inner .content:hover,
+.Season .Season-inner .content:hover {
+  box-shadow: 0 14px 28px rgba(100, 100, 100, 0.25),
+    0 10px 10px rgba(19, 19, 19, 0.445);
+}
+.Manga .cp-text,
+.Season .cp-text,
+.episodes .cp-text {
+  padding: 70px 10px;
+  text-align: center;
+}
+.Season h1 {
+  line-height: initial;
+  background-image: url(/src/Images/SEASON.jpg);
+  line-break: loose;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.Season h1 select {
+  user-select: all;
+  z-index: 88;
+  padding: 10px;
+  border-radius: 10px;
+  color: rgba(240, 46, 170);
+  border: 1px solid rgba(240, 46, 170);
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+    rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px,
+    rgba(240, 46, 170, 0.05) 25px 25px;
+}
+.episodes {
+  background-image: url(https://source.unsplash.com/random/800x800/?img=1);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.episodes .episodes-inner {
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(128, 128, 128);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: 0.5s;
+  font-size: 13px;
+  gap: 10px;
+}
+.episodes .episodes-inner:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.466);
+  color: black;
+}
+.episodes .episodes-inner .epid {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(255, 75, 75);
+  color: rgb(243, 243, 243);
+  transition: 0.5s;
+}
+.episodes .episodes-inner:hover .epid {
+  background-color: rgb(192, 0, 0);
+  color: white;
+}
+.episodes .episodes-inner .link {
+  border-color: grey;
+  color: grey;
+  transition: 0.5s;
+}
+.episodes .episodes-inner .link:hover {
+  color: rgb(192, 0, 0);
+  border-color: rgb(255, 255, 255);
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.not-found-container p {
+  font-size: 24px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.not-found-container p:first-child {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.not-found-container p:last-child {
+  font-size: 20px;
+  color: #666;
+}
+
+.not-found-container {
+  background-color: #f8f8f8; /* Optional for background */
+}
+
+@media screen and (max-width: 900px) {
+  .Top {
+    perspective: none;
+  }
+  .Top .cp-text {
+    padding: 30px 10px;
+  }
+  .container {
+    transform: none;
+    margin-top: 100px;
+  }
+  .Top h1,
+  .Manga h1,
+  .Season h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+}
